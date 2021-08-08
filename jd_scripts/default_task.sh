@@ -31,7 +31,7 @@ function run_hangup() {
             if [ -f "/scripts/$file" ]; then
                 echo "$_file开启挂机"
                 if type pm2 > /dev/null 2>&1; then
-                    if [ "$(pm2 list | grep "$_file")" == "" ]; then
+                    if [ "$(pm2 list | grep "$_file" | grep "root")" == "" ]; then
                         pm2 flush
                         pm2 start -a $file --watch "$file" --name=$_file
                     else
