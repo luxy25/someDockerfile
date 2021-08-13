@@ -8,6 +8,9 @@ function syncRepo() {
     git reset --hard
     git pull origin $REPO_BRANCH
     echo "git pull拉取shell最新代码..."
+    cd /jds
+    git remote set-url origin https://github.com/luxy25/someDockerfile
+    cd /scripts
     git -C /jds reset --hard
     git -C /jds pull origin master
 }
