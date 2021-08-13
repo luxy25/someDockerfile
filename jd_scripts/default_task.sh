@@ -231,24 +231,8 @@ fi
 crontab $mergedListFile
 
 echo "第11步处理挂机脚本任务..."
-run_file=("jd_crazy_joy_coin.js" "jd_cfd_loop.js")
-if [[ -n "$CRZAY_JOY_COIN_ENABLE" && "$CRZAY_JOY_COIN_ENABLE" != "Y" ]]; then
-    for i in ${run_file[@]}; do
-        if [[ "$i" == "jd_crazy_joy_coin.js" ]]; then
-            run_file=(${run_file[@]/jd_crazy_joy_coin.js})
-        fi
-    done
-fi
-if [[ -n "$CFD_LOOP_ENABLE" && "$CFD_LOOP_ENABLE" != "Y" ]]; then
-    for i in ${run_file[@]}; do
-        if [[ "$i" == "jd_cfd_loop.js" ]]; then
-            run_file=(${run_file[@]/jd_cfd_loop.js})
-        fi
-    done
-fi
-for i in ${run_file[@]}; do
-    run_hangup $i
-done
+run_hangup jd_crazy_joy_coin.js
+run_hangup jd_cfd_loop.js
 
 echo "第12步将仓库的 docker_entrypoint.sh 脚本更新至系统 /usr/local/bin/docker_entrypoint.sh 内..."
 cat /jds/jd_scripts/docker_entrypoint.sh > /usr/local/bin/docker_entrypoint.sh
