@@ -33,7 +33,7 @@ if [ $ENABLE_UNICOM ]; then
     appids=$(cat ~/.AutoSignMachine/.env | grep UNICOM_APPID | sed -n "s/.*'\(.*\)'.*/\1/p")
     i=1
     for username in $(cat ~/.AutoSignMachine/.env | grep UNICOM_USERNAME | sed -n "s/.*'\(.*\)'.*/\1/p" | sed "s/,/ /g"); do
-        sub_dir="asm${username:0:4}"
+        sub_dir="asm${username:0:6}"
         cp -rf /AutoSignMachine /"$sub_dir"
         echo "$sub_dir"
         pwd=$(echo $pwds | cut -d ',' -f$i)
@@ -43,6 +43,6 @@ if [ $ENABLE_UNICOM ]; then
         echo "UNICOM_APPID = '$appid'" >>/"$sub_dir"/config/.env
         echo "ASYNC_TASKS = true" >>/"$sub_dir"/config/.env
         i=$(expr $i + 1)
-        echo "*/20 6-23 * * * cd /$sub_dir && node index.js unicom >> /logs/unicom${username:0:4}.log 2>&1 &" >>$mergedListFile
+        echo "*/20 6-23 * * * cd /$sub_dir && node index.js unicom >> /logs/unicom${username:0:6}.log 2>&1 &" >>$mergedListFile
     done
 fi
