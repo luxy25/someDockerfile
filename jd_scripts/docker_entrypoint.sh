@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 function syncRepo() {
     cd /scripts
