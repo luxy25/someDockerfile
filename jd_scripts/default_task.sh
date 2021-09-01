@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 function initPythonEnv() {
     echo "开始安装运行jd_bot需要的python环境及依赖..."
