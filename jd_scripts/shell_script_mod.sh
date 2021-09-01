@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 mergedListFile="/scripts/docker/merged_list_file.sh"
 
